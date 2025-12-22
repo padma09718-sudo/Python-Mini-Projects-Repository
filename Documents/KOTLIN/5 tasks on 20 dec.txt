@@ -1,0 +1,223 @@
+https://github.com/haroldadmin/WhatTheStack
+
+dbe12fec2c3dcd039ed6833ae500ad95a7752324
+
+
+
+====================
+
+ Added a function takes a string query and returns a URL for a Google search, with the query string properly URL-encoded.
+
+
+ Modified Files:
+   * what-the-stack/src/main/java/com/haroldadmin/whatthestack/StackoverflowUtils.kt
+
+  Added Files:
+   * what-the-stack/src/test/java/com/haroldadmin/whatthestack/GoogleSearchUrlTest.kt (This file contains unit tests to
+     verify the correct functionality of the createGoogleSearchUrl function.)
+
+  Gradle Command to Run Tests:
+  To run the tests for the what-the-stack module (including the new tests), use the following command:
+   1 ./gradlew what-the-stack:test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==========================
+
+Implemented a 'Time Since Crash' display on the ExceptionPage that dynamically updates every second, showing the elapsed time since the exception occurred and providing a live, human-readable age for the crash.
+
+
+
+
+  Modified Application Code:
+   * what-the-stack/src/main/java/com/haroldadmin/whatthestack/ExceptionProcessor.kt
+   * what-the-stack/src/main/java/com/haroldadmin/whatthestack/Constants.kt
+   * what-the-stack/src/main/java/com/haroldadmin/whatthestack/WhatTheStackExceptionHandler.kt
+   * what-the-stack/src/main/java/com/haroldadmin/whatthestack/WhatTheStackActivity.kt
+   * what-the-stack/src/main/java/com/haroldadmin/whatthestack/ui/pages/ExceptionPage.kt
+   * what-the-stack/src/main/res/values/strings.xml
+
+  Unit Test File Path:
+   * what-the-stack/src/test/java/com/haroldadmin/whatthestack/ExceptionProcessingTest.kt
+
+
+
+new:
+
+ what-the-stack/src/test/java/com/haroldadmin/whatthestack/ui/pages/ExceptionPageTest.kt
+
+
+ .\gradlew.bat :what-the-stack:testDebugUnitTest --tests "com.haroldadmin.whatthestack.ExceptionProcessingTest"
+
+
+ Created `ExceptionPageTest.kt`: This new test file
+      (what-the-stack/src/test/java/com/haroldadmin/whatthestack/ui/pages/ExceptionPageTest.kt) contains UI tests for
+      the ExceptionDetails composable, specifically verifying the initial display and dynamic updates of the "Time Since
+      Crash" feature
+
+
+
+
+
+============================================
+
+
+https://github.com/BotsheloRamela/KotlinCalculatorApp/
+
+c30f3c39dfee20070477ad599824da52e31dbdf9
+
+added scientific functions (sine, cosine, tangent) to the calculator UI and integrated them with the expression evaluation logic, enabling users to perform trigonometric calculations.
+
+* UI Update: Added "sin", "cos", "tan", "(", and ")" buttons to the calculator interface in MainActivity.kt.
+   * Logic Integration: Modified the onClickMap in MainActivity.kt to append the correct function or parenthesis to the
+     expression when these new buttons are pressed. The solveExpression function (which uses the mXparser library) now
+     correctly evaluates these trigonometric expressions.
+   * Unit Tests: Added unit tests to app/src/test/java/com/botsheloramela/calculatorapp/CalculatorUnitTest.kt to verify
+     that the solveExpression function correctly calculates sine, cosine, and tangent values.
+
+
+ * app/src/main/java/com/botsheloramela/calculatorapp/MainActivity.kt (for adding the scientific function buttons and
+     their logic, as well as the parenthesis buttons)
+  
+   * app/src/test/java/com/botsheloramela/calculatorapp/CalculatorUnitTest.kt (for the unit test case)
+
+  Test File for the Implemented Feature:
+   * Unit Test: app/src/test/java/com/botsheloramela/calculatorapp/CalculatorUnitTest.kt
+
+
+./gradlew testDebugUnitTest --tests com.botsheloramela.calculatorapp.CalculatorUnitTest
+
+git checkout -b add-scientific-functions
+git add .
+git commit -m "Add scientific calculator functions with unit tests"
+git diff Main..add-scientific-functions > solution.patch 
+
+=================================================
+
+
+https://github.com/JakeWharton/timber
+
+2d07cf8f4b18325c7b8ee0d96edcf83d937789a4
+
+Added a feature the users to check if any Tree instances are currently planted. This helps in conditionally executing logging logic, preventing unnecessary work if no loggers are active.
+
+
+ `timber/src/commonMain/kotlin/timber/log/Timber.kt`: Added val isTreePlanted: Boolean to companion object Forest.
+   2. `timber/src/androidMain/kotlin/timber/log/Timber.kt`: Added actual val isTreePlanted: Boolean with its
+      implementation to actual companion object Forest.
+   3. `timber/src/test/java/timber/log/TimberTest.kt`: Added isTreePlanted() test method.
+   4. `timber/api/timber.api`: Automatically updated by updateLegacyAbi to reflect the new isTreePlanted method.
+
+
+ ./gradlew timber:check
+
+
+
+git diff Trunk..tree-instances > solution.patch 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================
+
+
+https://github.com/dropbox/Store
+
+d4e94b41d2a17c9ea8a3a46408ff3e2fd73a65e2
+
+
+
+
+
+
+
+
+
+
+
+
+ A utility function isValidEmail(email: String): Boolean within the EmailValidator object, which checks if a given string conforms to a basic email address format using a regular expression. This was added to the core module.
+
+  Files Modified or Added:
+
+   * Added:
+       * core/src/commonMain/kotlin/org/mobilenativefoundation/store/EmailValidator.kt (contains the EmailValidator
+         object and isValidEmail function)
+       * core/src/commonTest/kotlin/org/mobilenativefoundation/store/EmailValidatorTest.kt (contains the unit tests for
+         EmailValidator)
+   * Modified:
+       * core/api/android/core.api (This file was updated by running :core:apiDump to reflect the public API change
+         introduced by EmailValidator.kt)
+
+  Test File Added:
+
+   * core/src/commonTest/kotlin/org/mobilenativefoundation/store/EmailValidatorTest.kt
+
+  Gradle Command to Test the Files:
+
+  To build the core module and run its tests, including the newly added EmailValidatorTest, the command used was:
+
+   1 ./gradlew :core:build
+
+  During the process, I also used:
+   * ./gradlew :core:apiDump to update the API declaration.
+   * ./gradlew :core:spotlessApply to fix code formatting issues.
+
+
+
+
+
+
+
+
+
+added a feature ensures that detailed logs are only output during debug builds.
+
+
+=================================
+https://github.com/square/logcat
+
+6619678f9068d7df3defa62f141ceba9a5c0355a
+
+implemented a TaggedLogger that allows you to prefix all log messages with a custom tag. This is useful for easily identifying and filtering logs from specific parts of an application.
+
+  Here are the files I created:
+
+   1. Feature file: logcat/src/commonMain/kotlin/logcat/TaggedLogger.kt
+   2. Test file: logcat/src/commonTest/kotlin/logcat/TaggedLoggerTest.kt
+
+  To run the tests, you can use the following Gradle command:
+
+  ./gradlew :logcat:check
