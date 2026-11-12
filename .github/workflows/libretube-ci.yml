@@ -4,10 +4,16 @@ name: LibreTube CI
   push:
     paths:
       - '.github/workflows/libretube-ci.yml'
+      - '.github/orphaned-gitlinks.json'
+      - '.gitmodules'
+      - 'Documents/**'
       - 'Downloads/LibreTube-master/LibreTube-master/**'
   pull_request:
     paths:
       - '.github/workflows/libretube-ci.yml'
+      - '.github/orphaned-gitlinks.json'
+      - '.gitmodules'
+      - 'Documents/**'
       - 'Downloads/LibreTube-master/LibreTube-master/**'
   workflow_dispatch:
 

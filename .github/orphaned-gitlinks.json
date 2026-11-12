@@ -1,0 +1,57 @@
+{
+  "record_kind": "orphaned_gitlink_recovery_inventory",
+  "source_repository": "padma09718-sudo/Python-Mini-Projects-Repository",
+  "source_commit": "57b9e2aabf026a8d4ba8f09a021b8dbda0a9f190",
+  "reason": "These imported gitlink entries had no .gitmodules configuration. Their parent-repository entries are removed to resolve Actions checkout authentication-cleanup failures. Ordinary source files and external repositories are not deleted.",
+  "restoration": "Original repository URLs are unknown. After owner verification, restore the paths as correctly configured submodules pinned to the recorded commits. This inventory preserves references, not submodule contents, and does not guarantee upstream commit availability.",
+  "entries": [
+    {
+      "path": "Documents/KOTLIN/KotlinCalculatorApp",
+      "mode": "160000",
+      "type": "commit",
+      "commit_sha": "29440c11dec22263752187388fbaf850def1de70"
+    },
+    {
+      "path": "Documents/KOTLIN/Store",
+      "mode": "160000",
+      "type": "commit",
+      "commit_sha": "4a1ee4b158a5fded7973256b97067c48cdf9e0f5"
+    },
+    {
+      "path": "Documents/KOTLIN/WhatTheStack",
+      "mode": "160000",
+      "type": "commit",
+      "commit_sha": "345370cf45388b2b736d8535718821309b29d0b9"
+    },
+    {
+      "path": "Documents/KOTLIN/diffuse",
+      "mode": "160000",
+      "type": "commit",
+      "commit_sha": "d1f29e8acc078f1b2679c59baa5f81119a18ff8c"
+    },
+    {
+      "path": "Documents/KOTLIN/leakcanary",
+      "mode": "160000",
+      "type": "commit",
+      "commit_sha": "22bef70ba5abdba5f65935c1a37227d01be598d3"
+    },
+    {
+      "path": "Documents/KOTLIN/logcat",
+      "mode": "160000",
+      "type": "commit",
+      "commit_sha": "b59df20c9dcee325c482d30021b00365f61556dd"
+    },
+    {
+      "path": "Documents/KOTLIN/timber",
+      "mode": "160000",
+      "type": "commit",
+      "commit_sha": "61cd34d23b308ee37d2aa3d05d2b5e3da86d7188"
+    },
+    {
+      "path": "Documents/diffuse/diffuse-1",
+      "mode": "160000",
+      "type": "commit",
+      "commit_sha": "d1f29e8acc078f1b2679c59baa5f81119a18ff8c"
+    }
+  ]
+}
