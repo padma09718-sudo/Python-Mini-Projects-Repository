@@ -1,0 +1,63 @@
+name: LibreTube CI
+
+"on":
+  push:
+    paths:
+      - '.github/workflows/libretube-ci.yml'
+      - '.github/orphaned-gitlinks.json'
+      - '.gitmodules'
+      - 'Documents/**'
+      - 'Downloads/LibreTube-master/LibreTube-master/**'
+  pull_request:
+    paths:
+      - '.github/workflows/libretube-ci.yml'
+      - '.github/orphaned-gitlinks.json'
+      - '.gitmodules'
+      - 'Documents/**'
+      - 'Downloads/LibreTube-master/LibreTube-master/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  debug-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: Downloads/LibreTube-master/LibreTube-master
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v5
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+          cache-dependency-path: |
+            Downloads/LibreTube-master/LibreTube-master/**/*.gradle*
+            Downloads/LibreTube-master/LibreTube-master/gradle/wrapper/gradle-wrapper.properties
+            Downloads/LibreTube-master/LibreTube-master/gradle/libs.versions.toml
+
+      - name: Build debug APKs
+        run: bash ./gradlew --no-daemon assembleDebug
+
+      - name: Upload debug APKs
+        uses: actions/upload-artifact@v5
+        with:
+          name: libretube-debug-apks
+          path: Downloads/LibreTube-master/LibreTube-master/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 7
